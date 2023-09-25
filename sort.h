@@ -1,8 +1,8 @@
 #ifndef SORT_H
 #define SORT_H
 
-#define UP 0
-#define DOWN 1
+#define INCREMENT 1
+#define DECREMENT -1
 
 /**
  * enum bool - Enum Boolean values.
@@ -75,5 +75,8 @@ void swap_ints(int *a, int *b);
 void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
 void bubble_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void swap_nodes(listint_t **list, listint_t *node);
+listint_t *get_dlistint_lelem(listint_t *h);
 
 #endif /* SORT_H */
