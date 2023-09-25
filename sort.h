@@ -1,6 +1,20 @@
 #ifndef SORT_H
 #define SORT_H
 
+#define UP 0
+#define DOWN 1
+
+/**
+ * enum bool - Enum Boolean values.
+ * @false: 0.
+ * @true: 1.
+ */
+typedef enum bool
+{
+	false = 0,
+	true
+} bool;
+
 /* doubly linked list struct */
 
 /**
@@ -30,6 +44,27 @@ void swap_ints(int *a, int *b)
 	*a = *b;
 	*b = temp;
 }
+
+/**
+ * get_max - find max value in array
+ * @array: array
+ * @size: array size
+ *
+ * Return: max integer in array
+ */
+int get_max(int *array, int size)
+{
+	int max, i;
+
+	for (max = array[0], i = 1; i < size; i++)
+	{
+		if (array[i] > max)
+			max = array[i];
+	}
+
+	return (max);
+}
+
 
 
 /* prototypes */
