@@ -78,6 +78,8 @@ void bubble_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void swap_nodes(listint_t **list, listint_t *node);
 void counting_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
+int getCantRep(int num);
 listint_t *get_dlistint_lelem(listint_t *h);
 
 #endif /* SORT_H */
