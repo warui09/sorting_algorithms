@@ -1,8 +1,10 @@
 #ifndef SORT_H
 #define SORT_H
 
+<<<<<<< HEAD
 /* header files */
 #include <stddef.h>
+=======
 #define INCREMENT 1
 #define DECREMENT -1
 
@@ -16,6 +18,7 @@ typedef enum bool
 	false = 0,
 	true
 } bool;
+>>>>>>> f84fc94e0a8c37df2b30219569e5f76f3b136303
 
 /* doubly linked list struct */
 
@@ -73,7 +76,9 @@ int get_max(int *array, int size)
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+<<<<<<< HEAD
 void selection_sort(int *array, size_t size);
+=======
 void swap_ints(int *a, int *b);
 void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
@@ -84,5 +89,6 @@ void counting_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 int getCantRep(int num);
 listint_t *get_dlistint_lelem(listint_t *h);
+>>>>>>> f84fc94e0a8c37df2b30219569e5f76f3b136303
 
 #endif /* SORT_H */
