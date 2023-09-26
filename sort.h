@@ -50,5 +50,6 @@ void counting_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 int getCantRep(int num);
 listint_t *get_dlistint_lelem(listint_t *h);
+void quick_sort(int *array, size_t size);
 
 #endif /* SORT_H */

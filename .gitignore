@@ -36,6 +36,7 @@
 *.x86_64
 *.hex
 select
+quick
 
 # Debug files
 *.dSYM/
@@ -56,4 +57,4 @@ dkms.conf
 print_array.c
 print_list.c
 2-main.c
-select
+3-main.c
