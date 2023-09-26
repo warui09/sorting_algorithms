@@ -1,45 +1,39 @@
 #include "sort.h"
 
 /**
- * merge_sort - sort array through merging method
- * @array: array to sort
- * @merge: the command used in sorting through this method
- * @size: size of the array
+ * merge_subarr - sort a sub array of integers.
+ * @subarr: subarray of an array
+ * @buff: buffer to store sorted sub array.
+ * @front: the first array index
+ * @mid: the second array index
+ * @back: the third array index
  * 
  * Return: Nothing
-*/
-void merge(int *array, size_t left_size, size_t right_size){
-    size_t total_size = left_size + right_size;
-    int *temp = (int *)malloc(total_size * sizeof(int));
-    if (temp == NULL) {
-        printf("Memory allocation failed\n");
-        exit(1);
-    }
+ */
+void merge_subarr(int *subarr, int *buff, size_t front, size_t mid, size_t back)
+{
+	size_t a, b, c = 0;
 
-    size_t left_index = 0, right_index = left_size, temp_index = 0;
+	printf("Merging...\n[left]: ");
+	print_array(subarr + front, mid - front);
 
-    while (left_index < left_size && right_index < total_size) {
-        if (array[left_index] <= array[right_index]) {
-            temp[temp_index++] = array[left_index++];
-        } else {
-            temp[temp_index++] = array[right_index++];
-        }
-    }
+	printf("[right]: ");
+	print_array(subarr + mid, back - mid);
 
-    while (left_index < left_size) {
-        temp[temp_index++] = array[left_index++];
-    }
+	for (a = front, b = mid; a < mid && b < back; c++)
+		buff[c] = (subarr[a] < subarr[b]) ? subarr[a++] : subarr[b++];
+	for (; a < mid; a++)
+		buff[c++] = subarr[a];
+	for (; b < back; b++)
+		buff[c++] = subarr[b];
+	for (a = front, c = 0; a < back; a++)
+		subarr[a] = buff[c++];
 
-    while (right_index < total_size) {
-        temp[temp_index++] = array[right_index++];
-    }
-
-    for (size_t i = 0; i < total_size; i++) {
-        array[i] = temp[i];
-    }
-
-    free(temp);
+	printf("[Done]: ");
+	print_array(subarr + front, back - front);
 }
+
+
 /**
  * merge_sort_recursive - Handling the recursive function
  * @array: the array invloved in this recursion
@@ -48,19 +42,17 @@ void merge(int *array, size_t left_size, size_t right_size){
  * Return: Nothing
  * 
 */
-void merge_sort_recursive(int *array, size_t size){
-    if (size <= 1) {
-        return;
+void merge_sort_recursive(int *array, int *buff, size_t front, size_t back) {
+    size_t mid;
+    if (back - front > 1) {
+        mid = front + (back - front) / 2;
+        merge_sort_recursive(array, buff, front, mid);
+        merge_sort_recursive(array, buff, mid, back);
+        merge(array, buff, front, mid, back);
     }
-
-    size_t left_size = size / 2;
-    size_t right_size = size - left_size;
-
-    merge_sort_recursive(array, left_size);
-    merge_sort_recursive(array + left_size, right_size);
-
-    merge(array, left_size, right_size);
 }
+
+
 /**
  * merge_sort - the algorithm sort method
  * @array: array to sort
@@ -68,9 +60,19 @@ void merge_sort_recursive(int *array, size_t size){
  * 
  * Return: Nothing
 */
-void merge_sort(int *array, size_t size) {
-    if (size <= 1) {
-        return;
-    }
-    merge_sort_recursive(array, size);
+void merge_sort(int *array, size_t size)
+{
+	int *buff;
+
+	if (array == NULL || size < 2)
+		return;
+
+	buff = malloc(sizeof(int) * size);
+	if (buff == NULL)
+		return;
+
+	merge_sort_recursive(array, buff, 0, size);
+
+	free(buff);
+
 }

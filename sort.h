@@ -49,6 +49,7 @@ void swap_nodes(listint_t **list, listint_t *node);
 void merge_sort(int *array, size_t size);
 void merge(int *array, size_t left_size, size_t right_size);
 void merge_sort_recursive(int *array, size_t size);
+void merge_subarr(int *subarr, int *buff, size_t front, size_t mid, size_t back);
 void counting_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 int getCantRep(int num);
