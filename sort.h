@@ -33,41 +33,6 @@ typedef struct listint_s
     struct listint_s *next;
 } listint_t;
 
-/**
- * swap_ints - swap two numbers in an array.
- * @a: first num
- * @b: second num
- */
-void swap_ints(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
- * get_max - find max value in array
- * @array: array
- * @size: array size
- *
- * Return: max integer in array
- */
-int get_max(int *array, int size)
-{
-	int max, i;
-
-	for (max = array[0], i = 1; i < size; i++)
-	{
-		if (array[i] > max)
-			max = array[i];
-	}
-
-	return (max);
-}
-
-
 
 /* prototypes */
 
@@ -79,6 +44,7 @@ void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
 void bubble_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
+int get_max(int *array, int size);
 void swap_nodes(listint_t **list, listint_t *node);
 void counting_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
