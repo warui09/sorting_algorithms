@@ -3,6 +3,7 @@
 /**
  * merge_sort - sort array through merging method
  * @array: array to sort
+ * @merge: the command used in sorting through this method
  * @size: size of the array
  * 
  * Return: Nothing
@@ -39,7 +40,14 @@ void merge(int *array, size_t left_size, size_t right_size){
 
     free(temp);
 }
-
+/**
+ * merge_sort_recursive - Handling the recursive function
+ * @array: the array invloved in this recursion
+ * @size: size of the array
+ * 
+ * Return: Nothing
+ * 
+*/
 void merge_sort_recursive(int *array, size_t size){
     if (size <= 1) {
         return;
@@ -53,7 +61,13 @@ void merge_sort_recursive(int *array, size_t size){
 
     merge(array, left_size, right_size);
 }
-
+/**
+ * merge_sort - the algorithm sort method
+ * @array: array to sort
+ * @size: size of the array
+ * 
+ * Return: Nothing
+*/
 void merge_sort(int *array, size_t size) {
     if (size <= 1) {
         return;
